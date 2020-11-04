@@ -1,0 +1,96 @@
+https://learngitbranching.js.org/?locale=zh_CN
+
+git add  *.txt                                            将工作目录的文件放到暂存区
+
+git commit                                              将暂存区的文件放到仓库
+
+git status                                                查看仓库的状态
+
+git diff *.txt                                             对比工作目录的文件和仓库的文件
+
+HEAD                                                     指向的版本就是当前版本
+
+git reset --hard commit_id                      返回到某个版本，可以指定记录的哈希值，也可以用branch，tag，
+                                                              HEAD，也可以用相对路径HEAD^，HEAD~2。
+
+git log                                                    查看提交历史
+git log --graph                                       可以看到分支合并图
+git log --pretty=oneline                          查看单行的提交历史
+
+git reflog                                                查看命令历史
+
+git checkout -- file                                 可以丢弃工作区的修改，--很重要，没有--，就变成了“切换到另一个分支”的命令。
+                                                              1. file自修改后还没有被放到暂存区，现在，撤销修改就回到和版本库一模一样的状态；
+                                                              2. file已经添加到暂存区后，又作了修改，现在，撤销修改就回到添加到暂存区后的状态。
+
+git reset HEAD <file>                             文件修改后，add到暂存区。可以把暂存区的修改撤销掉（unstage），重新放回工作区。
+
+场景1：当你改乱了工作区某个文件的内容，想直接丢弃工作区的修改时，用命令git checkout -- file。
+场景2：当你不但改乱了工作区某个文件的内容，还添加到了暂存区时，想丢弃修改，分两步，第一步用命令git reset HEAD <file>，就回到了场景1，第二步按场景1操作。
+场景3：已经提交了不合适的修改到版本库时，想要撤销本次提交，参考版本回退一节，不过前提是没有推送到远程库。
+
+git rm file                                               删除文件，之后用git commit真正删除仓库的文件。
+
+ssh-keygen -t rsa -C "youremail@example.com" 创建SSH Key
+
+git remote add origin git@github.com:Hongwei-Zhou.git 从github克隆远程仓库并命名为origin
+
+git push -u origin master
+git push -u <远程主机名> <本机分支名>：<远程分支名> 向远程主机推送本机分支的内容，同时本机master和远程master
+                                                                                      关联起来。
+
+git branch                                               		查看分支
+git branch <name>	                               		创建分支
+git checkout <name> | git swtich <name>	切换分支
+git checkout -b <name> | git switch -c <name>	创建并切换分支
+git merge <name>      			合并某分支到当前分支
+git branch -d <name>                  		删除分支
+
+git checkout <branchName>	               切换分支名
+
+git checkout -b <branchName>	创建分支并切换到该分支
+
+git merge <branchName>		合并分支
+
+git rebase <branchName>		合并分支
+
+git checkout HEAD			将HEAD切换到C1记录上
+
+git checkout HEAD^			将HEAD切换到C1的父节点上
+
+git checkout HEAD~3		将HEAD切换到C1的第三级父节点上
+
+git branch -f master HEAD^3		将 master 分支强制指向 HEAD 的第 3 级父提交。
+
+git reset HEAD^			撤销本地库的修改到前一个提交
+
+git revert HEAD			撤销远程库库的修改到HEAD
+
+git cherry-pick c1 c4			将c1和C4提交复制一个放到主分上
+
+git rebase -i HEAD~4		交互式调整提交顺序
+
+git tag t1 c1			指定c1的标签为t1
+
+git clone				远程仓库<origin>/<master> 远程仓库名称/分支名称
+
+git fetch				从远程仓库下载本地仓库中缺失的提交记录
+				更新远程分支指针(如 o/master)
+
+git pull				就是 git fetch 和 git merge 的缩写
+
+git push <source>:<dest>		上传数据
+
+git pull --rebase 			fetch 和 rebase 的简写
+
+git branch -u  o/master foo		设置远程追踪分支, foo 就会跟踪 o/master
+
+
+
+
+
+
+
+
+
+
